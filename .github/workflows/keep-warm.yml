@@ -9,11 +9,5 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping PolyCompile health (07:00-23:59 IST only)
-        run: |
-          HOUR=$(TZ=Asia/Kolkata date +%H)
-          if [ "$HOUR" -ge 7 ]; then
-            curl -s -m 100 https://polycompile-pro.onrender.com/api/v1/health || true
-          else
-            echo "Night window - skipping ping"
-          fi
+      - name: Ping PolyCompile health
+        run: curl -s -m 100 https://polycompile-pro.onrender.com/api/v1/health || true
